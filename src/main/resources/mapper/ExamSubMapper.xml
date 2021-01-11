@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.yye.dao.mapper.ExamSubMapper" >
+  <resultMap id="BaseResultMap" type="org.yye.entity.ExamSub" >
+    <id column="examSubId" property="examsubid" jdbcType="INTEGER" />
+    <result column="examId" property="examid" jdbcType="INTEGER" />
+    <result column="examSubName" property="examsubname" jdbcType="VARCHAR" />
+    <result column="note" property="note" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    examSubId, examId, examSubName, note
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from examsub
+    where examSubId = #{examsubid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from examsub
+    where examSubId = #{examsubid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.yye.entity.ExamSub" >
+    insert into examsub (examSubId, examId, examSubName, 
+      note)
+    values (#{examsubid,jdbcType=INTEGER}, #{examid,jdbcType=INTEGER}, #{examsubname,jdbcType=VARCHAR}, 
+      #{note,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.yye.entity.ExamSub" >
+    insert into examsub
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="examsubid != null" >
+        examSubId,
+      </if>
+      <if test="examid != null" >
+        examId,
+      </if>
+      <if test="examsubname != null" >
+        examSubName,
+      </if>
+      <if test="note != null" >
+        note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="examsubid != null" >
+        #{examsubid,jdbcType=INTEGER},
+      </if>
+      <if test="examid != null" >
+        #{examid,jdbcType=INTEGER},
+      </if>
+      <if test="examsubname != null" >
+        #{examsubname,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null" >
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.yye.entity.ExamSub" >
+    update examsub
+    <set >
+      <if test="examid != null" >
+        examId = #{examid,jdbcType=INTEGER},
+      </if>
+      <if test="examsubname != null" >
+        examSubName = #{examsubname,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null" >
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where examSubId = #{examsubid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.yye.entity.ExamSub" >
+    update examsub
+    set examId = #{examid,jdbcType=INTEGER},
+      examSubName = #{examsubname,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR}
+    where examSubId = #{examsubid,jdbcType=INTEGER}
+  </update>
+</mapper>

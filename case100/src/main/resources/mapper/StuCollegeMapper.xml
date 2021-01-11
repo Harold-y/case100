@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.yye.dao.mapper.StuCollegeMapper" >
+  <resultMap id="BaseResultMap" type="org.yye.entity.StuCollege" >
+    <id column="stuCollegeId" property="stucollegeid" jdbcType="INTEGER" />
+    <result column="stuId" property="stuid" jdbcType="INTEGER" />
+    <result column="collegeId" property="collegeid" jdbcType="INTEGER" />
+    <result column="stuCollegeMajor" property="stucollegemajor" jdbcType="VARCHAR" />
+    <result column="stuCollegeScholarship" property="stucollegescholarship" jdbcType="DOUBLE" />
+    <result column="stuCollegeAlumniRelation" property="stucollegealumnirelation" jdbcType="VARCHAR" />
+    <result column="stuCollegeSelfFeeling" property="stucollegeselffeeling" jdbcType="VARCHAR" />
+    <result column="stuCollegeDistinctEssayUrl" property="stucollegedistinctessayurl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    stuCollegeId, stuId, collegeId, stuCollegeMajor, stuCollegeScholarship, stuCollegeAlumniRelation, 
+    stuCollegeSelfFeeling, stuCollegeDistinctEssayUrl
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from stucollege
+    where stuCollegeId = #{stucollegeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from stucollege
+    where stuCollegeId = #{stucollegeid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.yye.entity.StuCollege" >
+    insert into stucollege (stuCollegeId, stuId, collegeId, 
+      stuCollegeMajor, stuCollegeScholarship, 
+      stuCollegeAlumniRelation, stuCollegeSelfFeeling, 
+      stuCollegeDistinctEssayUrl)
+    values (#{stucollegeid,jdbcType=INTEGER}, #{stuid,jdbcType=INTEGER}, #{collegeid,jdbcType=INTEGER}, 
+      #{stucollegemajor,jdbcType=VARCHAR}, #{stucollegescholarship,jdbcType=DOUBLE}, 
+      #{stucollegealumnirelation,jdbcType=VARCHAR}, #{stucollegeselffeeling,jdbcType=VARCHAR}, 
+      #{stucollegedistinctessayurl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.yye.entity.StuCollege" >
+    insert into stucollege
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="stucollegeid != null" >
+        stuCollegeId,
+      </if>
+      <if test="stuid != null" >
+        stuId,
+      </if>
+      <if test="collegeid != null" >
+        collegeId,
+      </if>
+      <if test="stucollegemajor != null" >
+        stuCollegeMajor,
+      </if>
+      <if test="stucollegescholarship != null" >
+        stuCollegeScholarship,
+      </if>
+      <if test="stucollegealumnirelation != null" >
+        stuCollegeAlumniRelation,
+      </if>
+      <if test="stucollegeselffeeling != null" >
+        stuCollegeSelfFeeling,
+      </if>
+      <if test="stucollegedistinctessayurl != null" >
+        stuCollegeDistinctEssayUrl,
+      </if>
+      <if test="stucollegescoreid != null" >
+        stuCollegeScoreId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="stucollegeid != null" >
+        #{stucollegeid,jdbcType=INTEGER},
+      </if>
+      <if test="stuid != null" >
+        #{stuid,jdbcType=INTEGER},
+      </if>
+      <if test="collegeid != null" >
+        #{collegeid,jdbcType=INTEGER},
+      </if>
+      <if test="stucollegemajor != null" >
+        #{stucollegemajor,jdbcType=VARCHAR},
+      </if>
+      <if test="stucollegescholarship != null" >
+        #{stucollegescholarship,jdbcType=DOUBLE},
+      </if>
+      <if test="stucollegealumnirelation != null" >
+        #{stucollegealumnirelation,jdbcType=VARCHAR},
+      </if>
+      <if test="stucollegeselffeeling != null" >
+        #{stucollegeselffeeling,jdbcType=VARCHAR},
+      </if>
+      <if test="stucollegedistinctessayurl != null" >
+        #{stucollegedistinctessayurl,jdbcType=VARCHAR},
+      </if>
+      <if test="stucollegescoreid != null" >
+        #{stucollegescoreid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.yye.entity.StuCollege" >
+    update stucollege
+    <set >
+      <if test="stuid != null" >
+        stuId = #{stuid,jdbcType=INTEGER},
+      </if>
+      <if test="collegeid != null" >
+        collegeId = #{collegeid,jdbcType=INTEGER},
+      </if>
+      <if test="stucollegemajor != null" >
+        stuCollegeMajor = #{stucollegemajor,jdbcType=VARCHAR},
+      </if>
+      <if test="stucollegescholarship != null" >
+        stuCollegeScholarship = #{stucollegescholarship,jdbcType=DOUBLE},
+      </if>
+      <if test="stucollegealumnirelation != null" >
+        stuCollegeAlumniRelation = #{stucollegealumnirelation,jdbcType=VARCHAR},
+      </if>
+      <if test="stucollegeselffeeling != null" >
+        stuCollegeSelfFeeling = #{stucollegeselffeeling,jdbcType=VARCHAR},
+      </if>
+      <if test="stucollegedistinctessayurl != null" >
+        stuCollegeDistinctEssayUrl = #{stucollegedistinctessayurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where stuCollegeId = #{stucollegeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.yye.entity.StuCollege" >
+    update stucollege
+    set stuId = #{stuid,jdbcType=INTEGER},
+      collegeId = #{collegeid,jdbcType=INTEGER},
+      stuCollegeMajor = #{stucollegemajor,jdbcType=VARCHAR},
+      stuCollegeScholarship = #{stucollegescholarship,jdbcType=DOUBLE},
+      stuCollegeAlumniRelation = #{stucollegealumnirelation,jdbcType=VARCHAR},
+      stuCollegeSelfFeeling = #{stucollegeselffeeling,jdbcType=VARCHAR},
+      stuCollegeDistinctEssayUrl = #{stucollegedistinctessayurl,jdbcType=VARCHAR}
+    where stuCollegeId = #{stucollegeid,jdbcType=INTEGER}
+  </update>
+</mapper>

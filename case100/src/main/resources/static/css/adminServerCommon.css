@@ -1,0 +1,48 @@
+#topdiv
+{
+    margin-top:10px;
+}
+#middlediv
+{
+    margin-top:10px;
+}
+.searchs
+{
+    display: inline-block;
+}
+.layui-btn
+{
+    margin-left:5px;
+}
+.layui-input
+{
+    width:20%;
+}
+#form1
+{
+    margin-left:20%;
+}
+#btn_add
+{
+    margin-left:5%;
+}
+#btn_clear
+{
+    margin-left:65%;
+    margin-top:-2.3%;
+}
+#add_div
+{
+    width:700px;
+    margin-left:20%;
+}
+
+#btn_add
+{
+    margin-left:60%;
+    margin-top:-2.3%;
+}
+#modal_editRanking
+{
+
+}

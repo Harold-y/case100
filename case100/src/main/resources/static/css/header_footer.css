@@ -1,0 +1,32 @@
+#bottomDiv1
+{
+    width:100%;
+    height:300px;
+    background-color: #f2f2f2;
+}
+#bottomDiv2
+{
+    width:100%;
+    height:50px;
+    background-color: #F5F5F5;
+}
+.font_Harold
+{
+    font-family: Lantinghei SC;
+    color: #808080	;
+}
+.font_Harold2
+{
+    font-family: Lantinghei SC;
+    color: #999999	;
+}
+#notification
+{
+    margin-left: 10%;
+    margin-top:1%;
+}
+.panel
+{
+    width:30%;
+    display: inline-block;
+}

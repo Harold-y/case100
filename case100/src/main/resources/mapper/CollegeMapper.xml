@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.yye.dao.mapper.CollegeMapper" >
+  <resultMap id="BaseResultMap" type="org.yye.entity.College" >
+    <id column="collegeId" property="collegeid" jdbcType="INTEGER" />
+    <result column="collegeName" property="collegename" jdbcType="VARCHAR" />
+    <result column="collegeArea" property="collegearea" jdbcType="VARCHAR" />
+    <result column="collegeTuition" property="collegetuition" jdbcType="VARCHAR" />
+    <result column="collegeExpense" property="collegeexpense" jdbcType="VARCHAR" />
+    <result column="collegeAcceptanceRate" property="collegeacceptancerate" jdbcType="VARCHAR" />
+    <result column="collegeCampSize" property="collegecampsize" jdbcType="VARCHAR" />
+    <result column="collegeMenWomanRadio" property="collegemenwomanradio" jdbcType="VARCHAR" />
+    <result column="collegeEarlyDecision" property="collegeearlydecision" jdbcType="VARCHAR" />
+    <result column="collegeRegularDecision" property="collegeregulardecision" jdbcType="VARCHAR" />
+    <result column="collegeAvgFreshmanRentention" property="collegeavgfreshmanrentention" jdbcType="VARCHAR" />
+    <result column="collegeIntroduction" property="collegeintroduction" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    collegeId, collegeName, collegeArea, collegeTuition, collegeExpense, collegeAcceptanceRate, 
+    collegeCampSize, collegeMenWomanRadio, collegeEarlyDecision, collegeRegularDecision, 
+    collegeAvgFreshmanRentention, collegeIntroduction
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from college
+    where collegeId = #{collegeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from college
+    where collegeId = #{collegeid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.yye.entity.College" >
+    insert into college (collegeId, collegeName, collegeArea, 
+      collegeTuition, collegeExpense, collegeAcceptanceRate, 
+      collegeCampSize, collegeMenWomanRadio, 
+      collegeEarlyDecision, collegeRegularDecision, 
+      collegeAvgFreshmanRentention, collegeIntroduction
+      )
+    values (#{collegeid,jdbcType=INTEGER}, #{collegename,jdbcType=VARCHAR}, #{collegearea,jdbcType=VARCHAR}, 
+      #{collegetuition,jdbcType=VARCHAR}, #{collegeexpense,jdbcType=VARCHAR}, #{collegeacceptancerate,jdbcType=VARCHAR}, 
+      #{collegecampsize,jdbcType=VARCHAR}, #{collegemenwomanradio,jdbcType=VARCHAR}, 
+      #{collegeearlydecision,jdbcType=VARCHAR}, #{collegeregulardecision,jdbcType=VARCHAR}, 
+      #{collegeavgfreshmanrentention,jdbcType=VARCHAR}, #{collegeintroduction,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.yye.entity.College" >
+    insert into college
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="collegeid != null" >
+        collegeId,
+      </if>
+      <if test="collegename != null" >
+        collegeName,
+      </if>
+      <if test="collegearea != null" >
+        collegeArea,
+      </if>
+      <if test="collegetuition != null" >
+        collegeTuition,
+      </if>
+      <if test="collegeexpense != null" >
+        collegeExpense,
+      </if>
+      <if test="collegeacceptancerate != null" >
+        collegeAcceptanceRate,
+      </if>
+      <if test="collegecampsize != null" >
+        collegeCampSize,
+      </if>
+      <if test="collegemenwomanradio != null" >
+        collegeMenWomanRadio,
+      </if>
+      <if test="collegeearlydecision != null" >
+        collegeEarlyDecision,
+      </if>
+      <if test="collegeregulardecision != null" >
+        collegeRegularDecision,
+      </if>
+      <if test="collegeavgfreshmanrentention != null" >
+        collegeAvgFreshmanRentention,
+      </if>
+      <if test="collegeintroduction != null" >
+        collegeIntroduction,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="collegeid != null" >
+        #{collegeid,jdbcType=INTEGER},
+      </if>
+      <if test="collegename != null" >
+        #{collegename,jdbcType=VARCHAR},
+      </if>
+      <if test="collegearea != null" >
+        #{collegearea,jdbcType=VARCHAR},
+      </if>
+      <if test="collegetuition != null" >
+        #{collegetuition,jdbcType=VARCHAR},
+      </if>
+      <if test="collegeexpense != null" >
+        #{collegeexpense,jdbcType=VARCHAR},
+      </if>
+      <if test="collegeacceptancerate != null" >
+        #{collegeacceptancerate,jdbcType=VARCHAR},
+      </if>
+      <if test="collegecampsize != null" >
+        #{collegecampsize,jdbcType=VARCHAR},
+      </if>
+      <if test="collegemenwomanradio != null" >
+        #{collegemenwomanradio,jdbcType=VARCHAR},
+      </if>
+      <if test="collegeearlydecision != null" >
+        #{collegeearlydecision,jdbcType=VARCHAR},
+      </if>
+      <if test="collegeregulardecision != null" >
+        #{collegeregulardecision,jdbcType=VARCHAR},
+      </if>
+      <if test="collegeavgfreshmanrentention != null" >
+        #{collegeavgfreshmanrentention,jdbcType=VARCHAR},
+      </if>
+      <if test="collegeintroduction != null" >
+        #{collegeintroduction,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.yye.entity.College" >
+    update college
+    <set >
+      <if test="collegename != null" >
+        collegeName = #{collegename,jdbcType=VARCHAR},
+      </if>
+      <if test="collegearea != null" >
+        collegeArea = #{collegearea,jdbcType=VARCHAR},
+      </if>
+      <if test="collegetuition != null" >
+        collegeTuition = #{collegetuition,jdbcType=VARCHAR},
+      </if>
+      <if test="collegeexpense != null" >
+        collegeExpense = #{collegeexpense,jdbcType=VARCHAR},
+      </if>
+      <if test="collegeacceptancerate != null" >
+        collegeAcceptanceRate = #{collegeacceptancerate,jdbcType=VARCHAR},
+      </if>
+      <if test="collegecampsize != null" >
+        collegeCampSize = #{collegecampsize,jdbcType=VARCHAR},
+      </if>
+      <if test="collegemenwomanradio != null" >
+        collegeMenWomanRadio = #{collegemenwomanradio,jdbcType=VARCHAR},
+      </if>
+      <if test="collegeearlydecision != null" >
+        collegeEarlyDecision = #{collegeearlydecision,jdbcType=VARCHAR},
+      </if>
+      <if test="collegeregulardecision != null" >
+        collegeRegularDecision = #{collegeregulardecision,jdbcType=VARCHAR},
+      </if>
+      <if test="collegeavgfreshmanrentention != null" >
+        collegeAvgFreshmanRentention = #{collegeavgfreshmanrentention,jdbcType=VARCHAR},
+      </if>
+      <if test="collegeintroduction != null" >
+        collegeIntroduction = #{collegeintroduction,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where collegeId = #{collegeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.yye.entity.College" >
+    update college
+    set collegeName = #{collegename,jdbcType=VARCHAR},
+      collegeArea = #{collegearea,jdbcType=VARCHAR},
+      collegeTuition = #{collegetuition,jdbcType=VARCHAR},
+      collegeExpense = #{collegeexpense,jdbcType=VARCHAR},
+      collegeAcceptanceRate = #{collegeacceptancerate,jdbcType=VARCHAR},
+      collegeCampSize = #{collegecampsize,jdbcType=VARCHAR},
+      collegeMenWomanRadio = #{collegemenwomanradio,jdbcType=VARCHAR},
+      collegeEarlyDecision = #{collegeearlydecision,jdbcType=VARCHAR},
+      collegeRegularDecision = #{collegeregulardecision,jdbcType=VARCHAR},
+      collegeAvgFreshmanRentention = #{collegeavgfreshmanrentention,jdbcType=VARCHAR},
+      collegeIntroduction = #{collegeintroduction,jdbcType=VARCHAR}
+    where collegeId = #{collegeid,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectCollegeInfoByCollegeName" resultType="java.util.LinkedHashMap" parameterType="String">
+        select college.collegeId,college.collegeName,college.collegeChineseName,collegeArea,collegeTuition," +
+            "rankingUsNewsWorld,rankingYear from college,collegeranking
+             <where>
+               college.collegeId = collegeranking.collegeId and rankingYear = #{rankingYear}
+               <if test="collegeName!=null and collegeName !=''">
+                 and college.collegeName like concat('%',#{collegeName},'%')
+               </if>
+               <if test="collegeArea!='All' and collegeArea!='' and collegeArea!=null">
+                 and collegeArea = #{collegeArea}
+               </if>
+             </where>
+             limit 0,20
+  </select>
+</mapper>

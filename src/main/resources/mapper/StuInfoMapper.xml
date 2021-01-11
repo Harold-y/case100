@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.yye.dao.mapper.StuInfoMapper">
+  <resultMap id="BaseResultMap" type="org.yye.entity.StuInfo">
+    <id column="stuId" jdbcType="INTEGER" property="stuid" />
+    <result column="stuCaseId" jdbcType="VARCHAR" property="stucaseid" />
+    <result column="stuUsername" jdbcType="VARCHAR" property="stuusername" />
+    <result column="stuTelephone" jdbcType="VARCHAR" property="stutelephone" />
+    <result column="stuPassword" jdbcType="VARCHAR" property="stupassword" />
+    <result column="stuPhotoUrl" jdbcType="VARCHAR" property="stuphotourl" />
+    <result column="stuGPA" jdbcType="VARCHAR" property="stugpa" />
+    <result column="stuSex" jdbcType="VARCHAR" property="stusex" />
+    <result column="stuHighSchool" jdbcType="VARCHAR" property="stuhighschool" />
+    <result column="stuNationality" jdbcType="VARCHAR" property="stunationality" />
+    <result column="stuSexualOrientation" jdbcType="VARCHAR" property="stusexualorientation" />
+    <result column="stuEssayUrl" jdbcType="VARCHAR" property="stuessayurl" />
+    <result column="stuOtherInfo" jdbcType="VARCHAR" property="stuotherinfo" />
+    <result column="stuProvince" jdbcType="VARCHAR" property="stuprovince" />
+    <result column="stuCity" jdbcType="VARCHAR" property="stucity" />
+    <result column="stuEmail" jdbcType="VARCHAR" property="stuemail" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    stuId, stuCaseId, stuUsername, stuTelephone, stuPassword, stuPhotoUrl, stuGPA, stuSex, 
+    stuHighSchool, stuNationality, stuSexualOrientation, stuEssayUrl, stuOtherInfo, stuProvince, 
+    stuCity, stuEmail
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from stuinfo
+    where stuId = #{stuid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from stuinfo
+    where stuId = #{stuid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.yye.entity.StuInfo">
+    insert into stuinfo (stuId, stuCaseId, stuUsername, 
+      stuTelephone, stuPassword, stuPhotoUrl, 
+      stuGPA, stuSex, stuHighSchool, 
+      stuNationality, stuSexualOrientation, stuEssayUrl, 
+      stuOtherInfo, stuProvince, stuCity, 
+      stuEmail)
+    values (#{stuid,jdbcType=INTEGER}, #{stucaseid,jdbcType=VARCHAR}, #{stuusername,jdbcType=VARCHAR}, 
+      #{stutelephone,jdbcType=VARCHAR}, #{stupassword,jdbcType=VARCHAR}, #{stuphotourl,jdbcType=VARCHAR}, 
+      #{stugpa,jdbcType=VARCHAR}, #{stusex,jdbcType=VARCHAR}, #{stuhighschool,jdbcType=VARCHAR}, 
+      #{stunationality,jdbcType=VARCHAR}, #{stusexualorientation,jdbcType=VARCHAR}, #{stuessayurl,jdbcType=VARCHAR}, 
+      #{stuotherinfo,jdbcType=VARCHAR}, #{stuprovince,jdbcType=VARCHAR}, #{stucity,jdbcType=VARCHAR}, 
+      #{stuemail,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.yye.entity.StuInfo">
+    insert into stuinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stuid != null">
+        stuId,
+      </if>
+      <if test="stucaseid != null">
+        stuCaseId,
+      </if>
+      <if test="stuusername != null">
+        stuUsername,
+      </if>
+      <if test="stutelephone != null">
+        stuTelephone,
+      </if>
+      <if test="stupassword != null">
+        stuPassword,
+      </if>
+      <if test="stuphotourl != null">
+        stuPhotoUrl,
+      </if>
+      <if test="stugpa != null">
+        stuGPA,
+      </if>
+      <if test="stusex != null">
+        stuSex,
+      </if>
+      <if test="stuhighschool != null">
+        stuHighSchool,
+      </if>
+      <if test="stunationality != null">
+        stuNationality,
+      </if>
+      <if test="stusexualorientation != null">
+        stuSexualOrientation,
+      </if>
+      <if test="stuessayurl != null">
+        stuEssayUrl,
+      </if>
+      <if test="stuotherinfo != null">
+        stuOtherInfo,
+      </if>
+      <if test="stuprovince != null">
+        stuProvince,
+      </if>
+      <if test="stucity != null">
+        stuCity,
+      </if>
+      <if test="stuemail != null">
+        stuEmail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stuid != null">
+        #{stuid,jdbcType=INTEGER},
+      </if>
+      <if test="stucaseid != null">
+        #{stucaseid,jdbcType=VARCHAR},
+      </if>
+      <if test="stuusername != null">
+        #{stuusername,jdbcType=VARCHAR},
+      </if>
+      <if test="stutelephone != null">
+        #{stutelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="stupassword != null">
+        #{stupassword,jdbcType=VARCHAR},
+      </if>
+      <if test="stuphotourl != null">
+        #{stuphotourl,jdbcType=VARCHAR},
+      </if>
+      <if test="stugpa != null">
+        #{stugpa,jdbcType=VARCHAR},
+      </if>
+      <if test="stusex != null">
+        #{stusex,jdbcType=VARCHAR},
+      </if>
+      <if test="stuhighschool != null">
+        #{stuhighschool,jdbcType=VARCHAR},
+      </if>
+      <if test="stunationality != null">
+        #{stunationality,jdbcType=VARCHAR},
+      </if>
+      <if test="stusexualorientation != null">
+        #{stusexualorientation,jdbcType=VARCHAR},
+      </if>
+      <if test="stuessayurl != null">
+        #{stuessayurl,jdbcType=VARCHAR},
+      </if>
+      <if test="stuotherinfo != null">
+        #{stuotherinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="stuprovince != null">
+        #{stuprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="stucity != null">
+        #{stucity,jdbcType=VARCHAR},
+      </if>
+      <if test="stuemail != null">
+        #{stuemail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.yye.entity.StuInfo">
+    update stuinfo
+    <set>
+      <if test="stucaseid != null">
+        stuCaseId = #{stucaseid,jdbcType=VARCHAR},
+      </if>
+      <if test="stuusername != null">
+        stuUsername = #{stuusername,jdbcType=VARCHAR},
+      </if>
+      <if test="stutelephone != null">
+        stuTelephone = #{stutelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="stupassword != null">
+        stuPassword = #{stupassword,jdbcType=VARCHAR},
+      </if>
+      <if test="stuphotourl != null">
+        stuPhotoUrl = #{stuphotourl,jdbcType=VARCHAR},
+      </if>
+      <if test="stugpa != null">
+        stuGPA = #{stugpa,jdbcType=VARCHAR},
+      </if>
+      <if test="stusex != null">
+        stuSex = #{stusex,jdbcType=VARCHAR},
+      </if>
+      <if test="stuhighschool != null">
+        stuHighSchool = #{stuhighschool,jdbcType=VARCHAR},
+      </if>
+      <if test="stunationality != null">
+        stuNationality = #{stunationality,jdbcType=VARCHAR},
+      </if>
+      <if test="stusexualorientation != null">
+        stuSexualOrientation = #{stusexualorientation,jdbcType=VARCHAR},
+      </if>
+      <if test="stuessayurl != null">
+        stuEssayUrl = #{stuessayurl,jdbcType=VARCHAR},
+      </if>
+      <if test="stuotherinfo != null">
+        stuOtherInfo = #{stuotherinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="stuprovince != null">
+        stuProvince = #{stuprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="stucity != null">
+        stuCity = #{stucity,jdbcType=VARCHAR},
+      </if>
+      <if test="stuemail != null">
+        stuEmail = #{stuemail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where stuId = #{stuid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.yye.entity.StuInfo">
+    update stuinfo
+    set stuCaseId = #{stucaseid,jdbcType=VARCHAR},
+      stuUsername = #{stuusername,jdbcType=VARCHAR},
+      stuTelephone = #{stutelephone,jdbcType=VARCHAR},
+      stuPassword = #{stupassword,jdbcType=VARCHAR},
+      stuPhotoUrl = #{stuphotourl,jdbcType=VARCHAR},
+      stuGPA = #{stugpa,jdbcType=VARCHAR},
+      stuSex = #{stusex,jdbcType=VARCHAR},
+      stuHighSchool = #{stuhighschool,jdbcType=VARCHAR},
+      stuNationality = #{stunationality,jdbcType=VARCHAR},
+      stuSexualOrientation = #{stusexualorientation,jdbcType=VARCHAR},
+      stuEssayUrl = #{stuessayurl,jdbcType=VARCHAR},
+      stuOtherInfo = #{stuotherinfo,jdbcType=VARCHAR},
+      stuProvince = #{stuprovince,jdbcType=VARCHAR},
+      stuCity = #{stucity,jdbcType=VARCHAR},
+      stuEmail = #{stuemail,jdbcType=VARCHAR}
+    where stuId = #{stuid,jdbcType=INTEGER}
+  </update>
+
+
+
+</mapper>

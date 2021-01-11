@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-ydui Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="//unpkg.com/vue-ydui/dist/ydui.rem.css">
+    <!-- 引入rem自适应类库 -->
+    <script src="//unpkg.com/vue-ydui/dist/ydui.flexible.js"></script>
+</head>
+<style>
+
+</style>
+<body>
+<div id="app">
+
+    <yd-cell-group>
+        <yd-cell-item>
+            <span slot="left">用户名：</span>
+            <yd-input slot="right" required v-model="input1" max="20" placeholder="请输入用户名"></yd-input>
+        </yd-cell-item>
+        <yd-cell-item>
+            <span slot="left">密码：</span>
+            <yd-input slot="right" type="password" v-model="input2" placeholder="请输入密码"></yd-input>
+        </yd-cell-item>
+    </yd-cell-group>
+
+    <yd-button type="primary" @click.native="handleClick">Click Me!</yd-button>
+    <yd-button size="large" type="primary" shape="circle">shape="circle"</yd-button>
+
+
+
+</div>
+    <yd-tabbar>
+        <yd-tabbar-item title="首页" link="#">
+            <yd-icon name="home" slot="icon" size="0.54rem"></yd-icon>
+        </yd-tabbar-item>
+        <yd-tabbar-item title="购物车" link="#">
+            <yd-icon name="shopcart-outline" slot="icon" size="0.54rem"></yd-icon>
+        </yd-tabbar-item>
+        <yd-tabbar-item title="个人中心" link="#">
+            <yd-icon name="ucenter-outline" slot="icon" size="0.54rem"></yd-icon>
+        </yd-tabbar-item>
+        <yd-tabbar-item title="图片" link="#">
+            <img slot="icon" style="height: 25px;" src="path/img/logo.png">
+        </yd-tabbar-item>
+    </yd-tabbar>
+<!-- 引入 Vue -->
+<script src="//unpkg.com/vue"></script>
+<!-- 引入组件库 -->
+<script src="//unpkg.com/vue-ydui/dist/ydui.rem.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        methods: {
+            handleClick: function () {
+                this.$dialog.alert({mes: 'Hello World!'});
+            }
+        }
+    })
+</script>
+<script type="text/babel">
+    export default {
+
+    }
+</script>
+</body>
+</html>

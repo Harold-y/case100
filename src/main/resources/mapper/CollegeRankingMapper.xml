@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.yye.dao.mapper.CollegeRankingMapper" >
+  <resultMap id="BaseResultMap" type="org.yye.entity.CollegeRanking" >
+    <id column="rankingId" property="rankingid" jdbcType="INTEGER" />
+    <result column="collegeId" property="collegeid" jdbcType="INTEGER" />
+    <result column="rankingUsNewsLocal" property="rankingusnewslocal" jdbcType="VARCHAR" />
+    <result column="rankingUsNewsWorld" property="rankingusnewsworld" jdbcType="VARCHAR" />
+    <result column="rankingQsWorld" property="rankingqsworld" jdbcType="VARCHAR" />
+    <result column="rankingArwuWorld" property="rankingarwuworld" jdbcType="VARCHAR" />
+    <result column="rankingYear" property="rankingyear" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    rankingId, collegeId, rankingUsNewsLocal, rankingUsNewsWorld, rankingQsWorld, rankingArwuWorld, 
+    rankingYear
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from collegeranking
+    where rankingId = #{rankingid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from collegeranking
+    where rankingId = #{rankingid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.yye.entity.CollegeRanking" >
+    insert into collegeranking (rankingId, collegeId, rankingUsNewsLocal, 
+      rankingUsNewsWorld, rankingQsWorld, rankingArwuWorld, 
+      rankingYear)
+    values (#{rankingid,jdbcType=INTEGER}, #{collegeid,jdbcType=INTEGER}, #{rankingusnewslocal,jdbcType=VARCHAR}, 
+      #{rankingusnewsworld,jdbcType=VARCHAR}, #{rankingqsworld,jdbcType=VARCHAR}, #{rankingarwuworld,jdbcType=VARCHAR}, 
+      #{rankingyear,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.yye.entity.CollegeRanking" >
+    insert into collegeranking
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rankingid != null" >
+        rankingId,
+      </if>
+      <if test="collegeid != null" >
+        collegeId,
+      </if>
+      <if test="rankingusnewslocal != null" >
+        rankingUsNewsLocal,
+      </if>
+      <if test="rankingusnewsworld != null" >
+        rankingUsNewsWorld,
+      </if>
+      <if test="rankingqsworld != null" >
+        rankingQsWorld,
+      </if>
+      <if test="rankingarwuworld != null" >
+        rankingArwuWorld,
+      </if>
+      <if test="rankingyear != null" >
+        rankingYear,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rankingid != null" >
+        #{rankingid,jdbcType=INTEGER},
+      </if>
+      <if test="collegeid != null" >
+        #{collegeid,jdbcType=INTEGER},
+      </if>
+      <if test="rankingusnewslocal != null" >
+        #{rankingusnewslocal,jdbcType=VARCHAR},
+      </if>
+      <if test="rankingusnewsworld != null" >
+        #{rankingusnewsworld,jdbcType=VARCHAR},
+      </if>
+      <if test="rankingqsworld != null" >
+        #{rankingqsworld,jdbcType=VARCHAR},
+      </if>
+      <if test="rankingarwuworld != null" >
+        #{rankingarwuworld,jdbcType=VARCHAR},
+      </if>
+      <if test="rankingyear != null" >
+        #{rankingyear,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.yye.entity.CollegeRanking" >
+    update collegeranking
+    <set >
+      <if test="collegeid != null" >
+        collegeId = #{collegeid,jdbcType=INTEGER},
+      </if>
+      <if test="rankingusnewslocal != null" >
+        rankingUsNewsLocal = #{rankingusnewslocal,jdbcType=VARCHAR},
+      </if>
+      <if test="rankingusnewsworld != null" >
+        rankingUsNewsWorld = #{rankingusnewsworld,jdbcType=VARCHAR},
+      </if>
+      <if test="rankingqsworld != null" >
+        rankingQsWorld = #{rankingqsworld,jdbcType=VARCHAR},
+      </if>
+      <if test="rankingarwuworld != null" >
+        rankingArwuWorld = #{rankingarwuworld,jdbcType=VARCHAR},
+      </if>
+      <if test="rankingyear != null" >
+        rankingYear = #{rankingyear,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where rankingId = #{rankingid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.yye.entity.CollegeRanking" >
+    update collegeranking
+    set collegeId = #{collegeid,jdbcType=INTEGER},
+      rankingUsNewsLocal = #{rankingusnewslocal,jdbcType=VARCHAR},
+      rankingUsNewsWorld = #{rankingusnewsworld,jdbcType=VARCHAR},
+      rankingQsWorld = #{rankingqsworld,jdbcType=VARCHAR},
+      rankingArwuWorld = #{rankingarwuworld,jdbcType=VARCHAR},
+      rankingYear = #{rankingyear,jdbcType=VARCHAR}
+    where rankingId = #{rankingid,jdbcType=INTEGER}
+  </update>
+</mapper>

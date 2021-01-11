@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.yye.dao.mapper.ProcessedCaseDataMapper" >
+  <resultMap id="BaseResultMap" type="org.yye.entity.ProcessedCaseData" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="answerId" property="answerid" jdbcType="INTEGER" />
+    <result column="sat" property="sat" jdbcType="VARCHAR" />
+    <result column="act" property="act" jdbcType="VARCHAR" />
+    <result column="toefl" property="toefl" jdbcType="VARCHAR" />
+    <result column="ielts" property="ielts" jdbcType="VARCHAR" />
+    <result column="gpa" property="gpa" jdbcType="VARCHAR" />
+    <result column="note" property="note" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="org.yye.entity.ProcessedCaseDataWithBLOBs" extends="BaseResultMap" >
+    <result column="original_answer" property="originalAnswer" jdbcType="LONGVARCHAR" />
+    <result column="processed_answer" property="processedAnswer" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, answerId, sat, act, toefl, ielts, gpa, note
+  </sql>
+  <sql id="Blob_Column_List" >
+    original_answer, processed_answer
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from processedcasedata
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from processedcasedata
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.yye.entity.ProcessedCaseDataWithBLOBs" >
+    insert into processedcasedata (id, answerId, sat, 
+      act, toefl, ielts, 
+      gpa, note, original_answer, 
+      processed_answer)
+    values (#{id,jdbcType=INTEGER}, #{answerid,jdbcType=INTEGER}, #{sat,jdbcType=VARCHAR}, 
+      #{act,jdbcType=VARCHAR}, #{toefl,jdbcType=VARCHAR}, #{ielts,jdbcType=VARCHAR}, 
+      #{gpa,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}, #{originalAnswer,jdbcType=LONGVARCHAR}, 
+      #{processedAnswer,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.yye.entity.ProcessedCaseDataWithBLOBs" >
+    insert into processedcasedata
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="answerid != null" >
+        answerId,
+      </if>
+      <if test="sat != null" >
+        sat,
+      </if>
+      <if test="act != null" >
+        act,
+      </if>
+      <if test="toefl != null" >
+        toefl,
+      </if>
+      <if test="ielts != null" >
+        ielts,
+      </if>
+      <if test="gpa != null" >
+        gpa,
+      </if>
+      <if test="note != null" >
+        note,
+      </if>
+      <if test="originalAnswer != null" >
+        original_answer,
+      </if>
+      <if test="processedAnswer != null" >
+        processed_answer,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="answerid != null" >
+        #{answerid,jdbcType=INTEGER},
+      </if>
+      <if test="sat != null" >
+        #{sat,jdbcType=VARCHAR},
+      </if>
+      <if test="act != null" >
+        #{act,jdbcType=VARCHAR},
+      </if>
+      <if test="toefl != null" >
+        #{toefl,jdbcType=VARCHAR},
+      </if>
+      <if test="ielts != null" >
+        #{ielts,jdbcType=VARCHAR},
+      </if>
+      <if test="gpa != null" >
+        #{gpa,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null" >
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="originalAnswer != null" >
+        #{originalAnswer,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="processedAnswer != null" >
+        #{processedAnswer,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.yye.entity.ProcessedCaseDataWithBLOBs" >
+    update processedcasedata
+    <set >
+      <if test="answerid != null" >
+        answerId = #{answerid,jdbcType=INTEGER},
+      </if>
+      <if test="sat != null" >
+        sat = #{sat,jdbcType=VARCHAR},
+      </if>
+      <if test="act != null" >
+        act = #{act,jdbcType=VARCHAR},
+      </if>
+      <if test="toefl != null" >
+        toefl = #{toefl,jdbcType=VARCHAR},
+      </if>
+      <if test="ielts != null" >
+        ielts = #{ielts,jdbcType=VARCHAR},
+      </if>
+      <if test="gpa != null" >
+        gpa = #{gpa,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null" >
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="originalAnswer != null" >
+        original_answer = #{originalAnswer,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="processedAnswer != null" >
+        processed_answer = #{processedAnswer,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.yye.entity.ProcessedCaseDataWithBLOBs" >
+    update processedcasedata
+    set answerId = #{answerid,jdbcType=INTEGER},
+      sat = #{sat,jdbcType=VARCHAR},
+      act = #{act,jdbcType=VARCHAR},
+      toefl = #{toefl,jdbcType=VARCHAR},
+      ielts = #{ielts,jdbcType=VARCHAR},
+      gpa = #{gpa,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR},
+      original_answer = #{originalAnswer,jdbcType=LONGVARCHAR},
+      processed_answer = #{processedAnswer,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.yye.entity.ProcessedCaseData" >
+    update processedcasedata
+    set answerId = #{answerid,jdbcType=INTEGER},
+      sat = #{sat,jdbcType=VARCHAR},
+      act = #{act,jdbcType=VARCHAR},
+      toefl = #{toefl,jdbcType=VARCHAR},
+      ielts = #{ielts,jdbcType=VARCHAR},
+      gpa = #{gpa,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
