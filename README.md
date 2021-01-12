@@ -1,5 +1,5 @@
 # case100
-Hello from Harold.
+Hello from Harold. And from Gary!
 We are currently under construction of the project.
 This is a project serves for the students in China who wants to study abroad.
 
